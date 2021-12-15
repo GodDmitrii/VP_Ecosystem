@@ -1,8 +1,11 @@
 import React from "react";
-import Header from "./components/Header";
+import Header from "./Header/header";
+import Form from "./Form/form";
+
 const App: React.FC = () => {
     return (
       <Header/>
+      // <Form/> 
     )
   }
   
