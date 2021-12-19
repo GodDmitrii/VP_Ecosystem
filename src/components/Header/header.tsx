@@ -101,6 +101,7 @@ const Header: React.FC = () => {
     >
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={handleMenuClose}>Log out</MenuItem>
     </Menu>
   );
 
@@ -177,7 +178,7 @@ const Header: React.FC = () => {
           >
             VP Ecosystem
           </Typography>
-          <Search>
+          <Search sx={{ flexGrow: 2 }}>
             <SearchIconWrapper>
               <SearchIcon />
             </SearchIconWrapper>
