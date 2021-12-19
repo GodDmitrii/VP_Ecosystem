@@ -1,10 +1,9 @@
 const webpack = require("webpack");
 const path = require("path");
-const HTMLWebpackPlugin = require('html-webpack-plugin');
+const HTMLWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
-
-const filename = ext => `[name].${ext}`;
+const filename = (ext) => `[name].${ext}`;
 
 module.exports = {
   entry: path.resolve(__dirname, "./src/index.tsx"),
@@ -17,7 +16,7 @@ module.exports = {
       },
       {
         test: /\.tsx?$/,
-        use: 'ts-loader',
+        use: "ts-loader",
         exclude: /node_modules/,
       },
       {
@@ -27,19 +26,22 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js'],
+    extensions: [".tsx", ".ts", ".js"],
   },
   output: {
     path: path.resolve(__dirname, "./dist"),
     filename: "bundle.js",
   },
-  plugins: [new webpack.HotModuleReplacementPlugin(), 
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
     new HTMLWebpackPlugin({
-      template: './src/index.html'
-  }),
+      template: "./src/index.html",
+      favicon: "./src/images/vp_favicon.ico",
+    }),
     new MiniCssExtractPlugin({
-        filename: filename('css')
-    })],
+      filename: filename("css"),
+    }),
+  ],
   devServer: {
     port: path.resolve(__dirname, "./dist"),
     hot: true,
