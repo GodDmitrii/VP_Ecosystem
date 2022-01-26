@@ -17,6 +17,16 @@ import NotificationsIcon from "@mui/icons-material/Notifications";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MailIcon from "@mui/icons-material/Mail";
 import MoreIcon from "@mui/icons-material/MoreVert";
+import { makeStyles } from "@mui/styles";
+
+const useStyles = makeStyles({
+  typography: {
+    color: "white",
+    background: "linear-gradient(45deg, #fccb90, #d57eeb)",
+    "-webkit-background-clip": "text",
+    "-webkit-text-fill-color": "transparent",
+  },
+});
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -58,6 +68,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const Header: React.FC = () => {
+  const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
     React.useState<null | HTMLElement>(null);
@@ -175,6 +186,7 @@ const Header: React.FC = () => {
             noWrap
             component="div"
             sx={{ flexGrow: 1, display: { xs: "none", sm: "block" } }}
+            className={classes.typography}
           >
             VP Ecosystem
           </Typography>
