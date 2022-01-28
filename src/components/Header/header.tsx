@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import {
   AppBar,
   IconButton,
@@ -18,6 +18,8 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import MailIcon from "@mui/icons-material/Mail";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import { makeStyles } from "@mui/styles";
+import { MenuContext } from "../app";
+import { IHeaderData } from "../../interfaces/header-interface";
 
 const useStyles = makeStyles({
   typography: {
@@ -67,12 +69,17 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-const Header: React.FC = () => {
+const Header: React.FC<IHeaderData> = (props: IHeaderData): JSX.Element => {
   const classes = useStyles();
+  const menuData = useContext(MenuContext);
+  console.log("Context From Header", menuData);
+
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
     React.useState<null | HTMLElement>(null);
 
+  // const [menuIsOpened, setMenuIsOpened] = useState<boolean>(menuData);
+  const { openMenuHandler } = props;
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
@@ -92,6 +99,10 @@ const Header: React.FC = () => {
   const handleMobileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
+
+  // const handleMenuOpen = () => {
+  //   setMenuIsOpened(!menuData);
+  // };
 
   const menuId = "primary-search-account-menu";
   const renderMenu = (
@@ -178,6 +189,7 @@ const Header: React.FC = () => {
             color="inherit"
             aria-label="open drawer"
             sx={{ mr: 2 }}
+            onClick={openMenuHandler}
           >
             <MenuIcon />
           </IconButton>
