@@ -28,6 +28,9 @@ const useStyles = makeStyles({
     "-webkit-background-clip": "text",
     "-webkit-text-fill-color": "transparent",
   },
+  appbar: {
+    backgroundColor: "#604A9D !important",
+  },
 });
 
 const Search = styled("div")(({ theme }) => ({
@@ -72,7 +75,6 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const Header: React.FC<IHeaderData> = (props: IHeaderData): JSX.Element => {
   const classes = useStyles();
   const menuData = useContext(MenuContext);
-  console.log("Context From Header", menuData);
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] =
@@ -181,7 +183,7 @@ const Header: React.FC<IHeaderData> = (props: IHeaderData): JSX.Element => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" className={classes.appbar}>
         <Toolbar>
           <IconButton
             size="large"

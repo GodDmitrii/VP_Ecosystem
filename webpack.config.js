@@ -45,5 +45,6 @@ module.exports = {
   devServer: {
     port: path.resolve(__dirname, "./dist"),
     hot: true,
+    // historyApiFallback: true,
   },
 };
