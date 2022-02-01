@@ -17,14 +17,16 @@ const useStyles = makeStyles({
   },
 });
 
-const StyledMenuItem = styled(MenuItem)(({ theme }) => ({
+const StyledMenuItem = styled(MenuItem)(() => ({
   color: "#EFAE4C",
-  background: "linear-gradient(to top, #fa709a 0%, #fee140 100%)",
-  "-webkit-background-clip": "text",
-  "-webkit-text-fill-color": "transparent",
   width: "100%",
   fontWeight: "bold",
   fontSize: "12px",
+}));
+
+const StyledMenuLink = styled(Link)(() => ({
+  color: "#FEAAA6",
+  textDecoration: "none",
 }));
 
 const Menu: React.FC<IMenuData> = (props: IMenuData): JSX.Element => {
@@ -38,22 +40,22 @@ const Menu: React.FC<IMenuData> = (props: IMenuData): JSX.Element => {
           <Paper>
             <MenuList className={classes.menu__list}>
               <StyledMenuItem>
-                <Link to="/profile">Profile</Link>
+                <StyledMenuLink to="/profile">Profile</StyledMenuLink>
               </StyledMenuItem>
               <StyledMenuItem>
-                <Link to="/account">My account</Link>
+                <StyledMenuLink to="/account">My account</StyledMenuLink>
               </StyledMenuItem>
               <StyledMenuItem>
-                <Link to="/news">News</Link>
+                <StyledMenuLink to="/news">News</StyledMenuLink>
               </StyledMenuItem>
               <StyledMenuItem>
-                <Link to="/food">FoodOrder</Link>
+                <StyledMenuLink to="/food">FoodOrder</StyledMenuLink>
               </StyledMenuItem>
               <StyledMenuItem>
-                <Link to="/settings">Settings</Link>
+                <StyledMenuLink to="/settings">Settings</StyledMenuLink>
               </StyledMenuItem>
               <StyledMenuItem>
-                <Link to="/logout">Logout</Link>
+                <StyledMenuLink to="/logout">Logout</StyledMenuLink>
               </StyledMenuItem>
             </MenuList>
           </Paper>
