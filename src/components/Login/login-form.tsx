@@ -56,13 +56,15 @@ const useStyles = makeStyles({
 
 const schema = yup
   .object({
-    email: yup.string().email().required(),
-    password: yup.string().min(8).max(32).required(),
+    Email: yup.string().email().required(),
+    Password: yup.string().min(8).max(32).required(),
   })
   .required();
 
 const StyledErrorValidationResponse = styled("h3")(() => ({
-  border: "1px solid red",
+  backgroundColor: "#FAB6B2",
+  color: "darkred",
+  padding: "10px 10px 10px 25%",
 }));
 
 const LoginForm: React.FC = () => {
@@ -74,16 +76,6 @@ const LoginForm: React.FC = () => {
   } = useForm({
     resolver: yupResolver(schema),
   });
-
-  const [emailValue, setEmailValue] = useState<string>("");
-  const onEmailChangeHandler = (e: any) => {
-    setEmailValue(e.target.value);
-  };
-
-  const [passwordValue, setPasswordValue] = useState<string>("");
-  const onPasswordChangeHandler = (e: any) => {
-    setPasswordValue(e.target.value);
-  };
 
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const visibilityHandler = () => {
@@ -108,7 +100,7 @@ const LoginForm: React.FC = () => {
           alignItems="center"
           className={classes.grid__container}
         >
-          <form>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <Grid item xs={12}>
               <h3 style={{ color: "rgb(213 141 141)" }}>Enter your Email</h3>
               <FormControl sx={{ width: "400px" }} variant="outlined">
@@ -129,27 +121,22 @@ const LoginForm: React.FC = () => {
                   }
                   label="Email"
                   {...register("Email")}
-                  value={emailValue}
-                  onChange={onEmailChangeHandler}
                 />
-                {errors.email?.message ? (
+                {errors.Email?.message ? (
                   <StyledErrorValidationResponse>
-                    {errors.email?.message}
+                    {errors.Email?.message}
                   </StyledErrorValidationResponse>
                 ) : (
                   ""
                 )}
-                {console.log(errors.email?.message)}
               </FormControl>
             </Grid>
             <Grid item xs={12}>
               <h3 style={{ color: "rgb(213 141 141)" }}>Enter your Password</h3>
               <FormControl sx={{ width: "400px" }} variant="outlined">
-                <InputLabel htmlFor="outlined-adornment-password">
-                  Password
-                </InputLabel>
+                <InputLabel htmlFor="Password">Password</InputLabel>
                 <OutlinedInput
-                  id="outlined-adornment-password"
+                  id="Password"
                   startAdornment={
                     <InputAdornment position="start">
                       <IconButton
@@ -172,22 +159,23 @@ const LoginForm: React.FC = () => {
                     </InputAdornment>
                   }
                   label="Password"
-                  {...register("outlined-adornment-password")}
-                  value={passwordValue}
-                  onChange={onPasswordChangeHandler}
+                  {...register("Password")}
                   type={isVisible ? "text" : "password"}
                 />
+                {errors.Password?.message ? (
+                  <StyledErrorValidationResponse>
+                    {errors.Password?.message}
+                  </StyledErrorValidationResponse>
+                ) : (
+                  ""
+                )}
               </FormControl>
             </Grid>
             <Grid item xs={12}>
-              {/* <Button variant="contained" className={classes.submit__button} onSubmit={handleSubmit(onSubmit2)}>
-              Login
-            </Button> */}
               <Input
                 type="submit"
                 className={classes.submit__button}
                 value="Login"
-                onSubmit={handleSubmit(onSubmit)}
               />
             </Grid>
           </form>
@@ -199,7 +187,6 @@ const LoginForm: React.FC = () => {
               <FacebookIcon color="primary" />
             </Button>
           </Grid>
-          {/* <input type="submit" /> */}
         </Grid>
       </Paper>
     </>
