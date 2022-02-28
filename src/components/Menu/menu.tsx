@@ -3,7 +3,7 @@ import { makeStyles, styled } from "@mui/styles";
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { IMenuData } from "../../interfaces/menu-interface";
-import { MenuContext } from "../app";
+import { MenuContext } from "../Home/home";
 
 const useStyles = makeStyles({
   wrapper: {
@@ -56,6 +56,9 @@ const Menu: React.FC<IMenuData> = (props: IMenuData): JSX.Element => {
               </StyledMenuItem>
               <StyledMenuItem>
                 <StyledMenuLink to="/logout">Logout</StyledMenuLink>
+              </StyledMenuItem>
+              <StyledMenuItem>
+                <Link to="/error"></Link>
               </StyledMenuItem>
             </MenuList>
           </Paper>

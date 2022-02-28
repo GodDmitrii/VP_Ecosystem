@@ -18,8 +18,8 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import MailIcon from "@mui/icons-material/Mail";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import { makeStyles } from "@mui/styles";
-import { MenuContext } from "../app";
 import { IHeaderData } from "../../interfaces/header-interface";
+import { MenuContext } from "../Home/home";
 
 const useStyles = makeStyles({
   typography: {
